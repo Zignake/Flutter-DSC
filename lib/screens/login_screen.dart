@@ -11,7 +11,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  String loggedInBy;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +22,6 @@ class _LoginScreenState extends State<LoginScreen> {
               children: <Widget>[
                 OutlineButton(
                   onPressed: () {
-                    loggedInBy = 'google';
                     signInWithGoogle().whenComplete(
                       () {
                         Navigator.pushNamed(context, HomeScreen.id);
@@ -31,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     );
                   },
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
+                      borderRadius: BorderRadius.circular(20)),
                   highlightElevation: 0,
                   borderSide: BorderSide(color: Colors.grey),
                   child: Padding(
@@ -49,7 +47,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 OutlineButton(
                   onPressed: () {
-                    loggedInBy = 'facebook';
                     initiateFacebookLogin().whenComplete(
                           () {
                         Navigator.pushNamed(context, HomeScreen.id);
@@ -57,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     );
                   },
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
+                      borderRadius: BorderRadius.circular(20)),
                   highlightElevation: 0,
                   borderSide: BorderSide(color: Colors.grey),
                   child: Padding(

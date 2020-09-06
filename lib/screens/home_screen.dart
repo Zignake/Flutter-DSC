@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:project_dsc/sign_in.dart';
-import 'login_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String id = 'home_screen';
