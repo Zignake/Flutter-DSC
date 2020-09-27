@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:project_dsc/screens/translator.dart';
 import 'package:project_dsc/sign_in.dart';
 import 'home_screen.dart';
-
 
 class LoginScreen extends StatefulWidget {
   static const String id = 'login_screen';
@@ -11,7 +11,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  String loggedInBy;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,15 +22,14 @@ class _LoginScreenState extends State<LoginScreen> {
               children: <Widget>[
                 OutlineButton(
                   onPressed: () {
-                    loggedInBy = 'google';
                     signInWithGoogle().whenComplete(
                       () {
-                        Navigator.pushNamed(context, HomeScreen.id);
+                        Navigator.pushNamed(context, Translation.id);
                       },
                     );
                   },
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
+                      borderRadius: BorderRadius.circular(20)),
                   highlightElevation: 0,
                   borderSide: BorderSide(color: Colors.grey),
                   child: Padding(
@@ -49,15 +47,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 OutlineButton(
                   onPressed: () {
-                    loggedInBy = 'facebook';
                     initiateFacebookLogin().whenComplete(
-                          () {
+                      () {
                         Navigator.pushNamed(context, HomeScreen.id);
                       },
                     );
                   },
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
+                      borderRadius: BorderRadius.circular(20)),
                   highlightElevation: 0,
                   borderSide: BorderSide(color: Colors.grey),
                   child: Padding(

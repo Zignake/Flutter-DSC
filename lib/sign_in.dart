@@ -39,8 +39,8 @@ Future<String> signInWithGoogle() async {
 
 void signOutGoogle() async{
   await googleSignIn.signOut();
-  name = 'name';
-  email = 'email';
+  name = 'no name';
+  email = 'no email';
   imageUrl = 'url';
   print("User Sign Out");
 }
@@ -48,10 +48,10 @@ void signOutGoogle() async{
 Future<String> initiateFacebookLogin() async {
   var facebookLogin = FacebookLogin();
   var facebookLoginResult =
-  await facebookLogin.logInWithReadPermissions(['email']);
+  await facebookLogin.logInWithReadPermissions(['email', 'public_profile']);
   switch (facebookLoginResult.status) {
     case FacebookLoginStatus.error:
-      print("Error");
+      print("Error ${FacebookLoginStatus.error.toString()}");
       break;
     case FacebookLoginStatus.cancelledByUser:
       print("CancelledByUser");
@@ -62,11 +62,11 @@ Future<String> initiateFacebookLogin() async {
               .accessToken.token}');
 
       var profile = json.decode(graphResponse.body);
-      print(profile.toString());
+      print("TEMP${profile.toString()}");
 
       name = profile['name'];
       email = profile['email'];
-      imageUrl = 'https://www.w3schools.com/w3css/img_lights.jpg';
+      imageUrl = profile['picture']['data']['url'];
       break;
   }
   return 'signInWithGoogle succeeded: ${FacebookLoginStatus.loggedIn}';
@@ -74,8 +74,8 @@ Future<String> initiateFacebookLogin() async {
 
 void signOutFacebook() async{
   await facebookLogin.logOut();
-  name = 'name';
-  email = 'email';
+  name = 'no name';
+  email = 'no email';
   imageUrl = 'url';
   print("User Sign Out");
 }
