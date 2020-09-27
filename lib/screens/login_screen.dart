@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:project_dsc/screens/translator.dart';
 import 'package:project_dsc/sign_in.dart';
 import 'home_screen.dart';
-
 
 class LoginScreen extends StatefulWidget {
   static const String id = 'login_screen';
@@ -24,7 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   onPressed: () {
                     signInWithGoogle().whenComplete(
                       () {
-                        Navigator.pushNamed(context, HomeScreen.id);
+                        Navigator.pushNamed(context, Translation.id);
                       },
                     );
                   },
@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 OutlineButton(
                   onPressed: () {
                     initiateFacebookLogin().whenComplete(
-                          () {
+                      () {
                         Navigator.pushNamed(context, HomeScreen.id);
                       },
                     );
